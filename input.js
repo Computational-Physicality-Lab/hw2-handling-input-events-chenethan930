@@ -160,6 +160,13 @@ workspace.addEventListener('touchend', function(e){
 for(var i = 0; i < num ; i++){
     target[i].addEventListener('touchstart', function(e){
         ts = new Date().getTime();
+        if(dblclk === 0){
+            isDown = true
+            mouseX = e.pageX
+            mouseY = e.pageY
+            moveid = this.id;
+            document.addEventListener('touchmove',move)
+        }
         e.preventDefault();
         e.stopPropagation();
     })
@@ -187,6 +194,17 @@ for(var i = 0; i < num ; i++){
                 target.forEach(ele1 => ele1.style.backgroundColor = 'red')
                 target[this.id].style.backgroundColor = '#00f';
             }
+        }
+        if(isDown){     
+            offsetsX[moveid] += e.pageX - mouseX;
+            offsetsY[moveid] += e.pageY - mouseY;
+            if(dblclk === 1){
+                dblclk = 0;
+            }
+            // console.log(offsetsX);
+            // console.log(offsetsY);
+            isDown = false
+            document.removeEventListener('mousemove', move)
         }
         var tapLength = currentTime - lastTap;
         if (tapLength < 300 && tapLength > 0) {
