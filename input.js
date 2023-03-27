@@ -28,6 +28,7 @@ var ddx = 0;
 var ddy = 0;
 var wx = 0;
 var wy = 0;
+var bf = false;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -39,10 +40,11 @@ for(var i = 0; i < num; i++){
 
 workspace.addEventListener('click', (event) => {
     console.log('workspace click')
-    if(esc === false){
+    if(esc === false && !bf){
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
     }
+    bf = false;
     esc = false;
     
 })
@@ -66,6 +68,9 @@ target.forEach( ele => ele.addEventListener('click', (event) => {
             ele.style.backgroundColor = '#00f';
     }
     }
+    if(bf === true){
+        bf = false;
+    }
     event.stopPropagation();
 }));
 
@@ -88,6 +93,7 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
         if (isDown) {
         offsetsX[moveid] += e.pageX - mouseX;
         offsetsY[moveid] += e.pageY - mouseY;
+        bf = true;
         }
         if(dblclk === 1){
             dblclk = 0;
@@ -146,6 +152,8 @@ workspace.addEventListener('touchend', function(e){
           }
         console.log(offsetsX[moveid]);
         console.log(offsetsY[moveid]);
+        console.log(e.pageX);
+        console.log(e.pageY);
         dblclk = 0;
         isDown = false
         document.removeEventListener('touchmove', move)
@@ -173,7 +181,7 @@ for(var i = 0; i < num ; i++){
     target[i].addEventListener('touchend', function(e){
         mobile = true;
         var currentTime = new Date().getTime();
-        if(currentTime - ts < 500 && currentTime - ts > 0){
+        if(currentTime - ts < 200 && currentTime - ts > 0){
             if(dblclk === 1){
                 console.log('release in target')
                 if (isDown) {
@@ -214,6 +222,8 @@ for(var i = 0; i < num ; i++){
             mouseY = e.pageY
             console.log('mouseX is');
             console.log(mouseX)
+            console.log('mouseY is');
+            console.log(mouseY)
             moveid = this.id;
             console.log(offsetsX[moveid])
             console.log(offsetsY[moveid])
