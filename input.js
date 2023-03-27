@@ -26,6 +26,8 @@ var ts = 0;
 var mobile = false;
 var ddx = 0;
 var ddy = 0;
+var wx = 0;
+var wy = 0;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -129,9 +131,14 @@ document.addEventListener('keydown', evt => {
     }
 });
 
+workspace.addEventListener('touchstart', function(e){
+    e.preventDefault();
+    wx = e.pageX;
+    wy = e.pageY;
+})
 workspace.addEventListener('touchend', function(e){
     e.preventDefault();
-    if(dblclk === 1){
+    if(dblclk === 1 && e.pageX - wx < 5 && e.pageY - wy < 5 && e.pageX - wx > -5 && e.pageY - wy > -5){
         console.log('release in workspace')
         if (isDown) {
             offsetsX[moveid] += ddx - mouseX;
