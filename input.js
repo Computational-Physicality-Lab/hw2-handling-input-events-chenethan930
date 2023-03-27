@@ -22,6 +22,7 @@ var dblclk = 0;
 var esc = false;
 var timeout;
 var lastTap = 0;
+var ts = 0;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -35,7 +36,6 @@ workspace.addEventListener('click', (event) => {
     if(esc === false){
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
-        console.log('click');
     }
     esc = false;
     
@@ -55,8 +55,6 @@ target.forEach( ele => ele.addEventListener('click', (event) => {
             }
         }
         if(event.pageX - mouseX < 5 && event.pageY - mouseY < 5 && event.pageX - mouseX > -5 && event.pageY - mouseY > -5){
-            console.log(event.pageX - mouseX)
-            console.log(event.pageY - mouseY)
             target.forEach(ele1 => ele1.style.backgroundColor = 'red')
             ele.style.backgroundColor = '#00f';
     }
@@ -71,7 +69,6 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
         mouseX = e.pageX
         mouseY = e.pageY
         moveid = this.id;
-        console.log(moveid);
         document.addEventListener('mousemove',move)
         e.stopPropagation();
     }
@@ -85,8 +82,11 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
     if(dblclk === 1){
         dblclk = 0;
     }
+    console.log(offsetsX);
+    console.log(offsetsY);
     isDown = false
     document.removeEventListener('mousemove', move)
+    document.removeEventListener('touchmove', move)
   });
   
   
@@ -111,7 +111,6 @@ document.addEventListener('keydown', evt => {
     if (evt.key === 'Escape') {
         if(isDown === true){
             esc = true;
-            console.log('hi');
             target[moveid].style.transform = `translate(${offsetsX[moveid]}px,${offsetsY[moveid]}px)`;
             isDown = false;
             dblclk = 0;
@@ -120,11 +119,14 @@ document.addEventListener('keydown', evt => {
 });
 
 for(var i = 0; i < num ; i++){
+    target[i].addEventListener('touchstart', function(e){
+        e.preventDefault();
+        ts = new Date().getTime();
+    })
     target[i].addEventListener('touchend', function(e){
         var currentTime = new Date().getTime();
         var tapLength = currentTime - lastTap;
         if (tapLength < 500 && tapLength > 0) {
-            console.log('hi');
             e.preventDefault();
             dblclk = 1;
             isDown = true
