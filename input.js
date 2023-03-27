@@ -24,6 +24,8 @@ var timeout;
 var lastTap = 0;
 var ts = 0;
 var mobile = false;
+var ddx = 0;
+var ddy = 0;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -34,6 +36,7 @@ for(var i = 0; i < num; i++){
 }
 
 workspace.addEventListener('click', (event) => {
+    console.log('workspace click')
     if(esc === false){
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
@@ -99,6 +102,8 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
     if (isDown) {
       const dx = e.pageX - mouseX
       const dy = e.pageY - mouseY
+      ddx = offsetsX[moveid] + dx;
+      ddy = offsetsY[moveid] + dy;
       target[moveid].style.transform = `translate(${offsetsX[moveid] + dx}px,${offsetsY[moveid] + dy}px)`;
     }
   }
@@ -137,8 +142,8 @@ for(var i = 0; i < num ; i++){
             if(dblclk === 1){
                 console.log('release')
                 if (isDown) {
-                    offsetsX[moveid] += e.pageX - mouseX;
-                    offsetsY[moveid] += e.pageY - mouseY;
+                    offsetsX[moveid] += ddx - mouseX;
+                    offsetsY[moveid] += ddy - mouseY;
                   }
                 console.log(offsetsX[moveid]);
                 console.log(offsetsY[moveid]);
