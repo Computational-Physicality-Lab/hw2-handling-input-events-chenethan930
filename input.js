@@ -78,18 +78,20 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
   }));
   
   document.addEventListener('mouseup', function(e) {
-    console.log('mouseup')
-    if (isDown) {
-      offsetsX[moveid] += e.pageX - mouseX;
-      offsetsY[moveid] += e.pageY - mouseY;
+    if(!mobile){
+        console.log('mouseup')
+        if (isDown) {
+        offsetsX[moveid] += e.pageX - mouseX;
+        offsetsY[moveid] += e.pageY - mouseY;
+        }
+        if(dblclk === 1){
+            dblclk = 0;
+        }
+        // console.log(offsetsX);
+        // console.log(offsetsY);
+        isDown = false
+        document.removeEventListener('mousemove', move)
     }
-    if(dblclk === 1){
-        dblclk = 0;
-    }
-    // console.log(offsetsX);
-    // console.log(offsetsY);
-    isDown = false
-    document.removeEventListener('mousemove', move)
   });
   
   
