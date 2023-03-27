@@ -86,7 +86,6 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
     console.log(offsetsY);
     isDown = false
     document.removeEventListener('mousemove', move)
-    document.removeEventListener('touchmove', move)
   });
   
   
@@ -125,6 +124,16 @@ for(var i = 0; i < num ; i++){
     })
     target[i].addEventListener('touchend', function(e){
         var currentTime = new Date().getTime();
+        if(currentTime - ts < 500 && currentTime - ts > 0){
+            if(isColorSet === 0){
+                target[this.id].style.backgroundColor = '#00f';
+                isColorSet = 1;
+            }
+            else{
+                target.forEach(ele1 => ele1.style.backgroundColor = 'red')
+                target[this.id].style.backgroundColor = '#00f';
+            }
+        }
         var tapLength = currentTime - lastTap;
         if (tapLength < 500 && tapLength > 0) {
             e.preventDefault();
