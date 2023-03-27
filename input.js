@@ -129,6 +129,25 @@ document.addEventListener('keydown', evt => {
     }
 });
 
+workspace.addEventListener('touchend', function(e){
+    e.preventDefault();
+    if(dblclk === 1){
+        console.log('release in workspace')
+        if (isDown) {
+            offsetsX[moveid] += ddx - mouseX;
+            offsetsY[moveid] += ddy - mouseY;
+          }
+        console.log(offsetsX[moveid]);
+        console.log(offsetsY[moveid]);
+        dblclk = 0;
+        isDown = false
+        document.removeEventListener('touchmove', move)
+    }else{
+        target.forEach(ele1 => ele1.style.backgroundColor = 'red')
+        isColorSet = 0;
+    }
+})
+
 for(var i = 0; i < num ; i++){
     target[i].addEventListener('touchstart', function(e){
         e.preventDefault();
@@ -140,7 +159,7 @@ for(var i = 0; i < num ; i++){
         var currentTime = new Date().getTime();
         if(currentTime - ts < 500 && currentTime - ts > 0){
             if(dblclk === 1){
-                console.log('release')
+                console.log('release in target')
                 if (isDown) {
                     offsetsX[moveid] += ddx - mouseX;
                     offsetsY[moveid] += ddy - mouseY;
@@ -172,3 +191,4 @@ for(var i = 0; i < num ; i++){
         lastTap = currentTime;
         })
 }
+
