@@ -137,12 +137,15 @@ workspace.addEventListener('touchend', function(e){
             offsetsX[moveid] += ddx - mouseX;
             offsetsY[moveid] += ddy - mouseY;
           }
+        console.log(ddx)
+        console.log(mouseX)
         console.log(offsetsX[moveid]);
         console.log(offsetsY[moveid]);
         dblclk = 0;
         isDown = false
         document.removeEventListener('touchmove', move)
     }else{
+        console.log('turn red')
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
     }
@@ -185,12 +188,13 @@ for(var i = 0; i < num ; i++){
             isDown = true
             mouseX = e.pageX
             mouseY = e.pageY
+            console.log(mouseX);
             moveid = this.id;
             document.addEventListener('touchmove',move)
         }
         lastTap = currentTime;
         e.preventDefault();
-        e.stopPropagation();
+        e.stopPropagation();    
         })
 }
 
