@@ -150,11 +150,11 @@ workspace.addEventListener('touchend', function(e){
 
 for(var i = 0; i < num ; i++){
     target[i].addEventListener('touchstart', function(e){
-        e.preventDefault();
         ts = new Date().getTime();
+        e.preventDefault();
+        e.stopPropagation();
     })
     target[i].addEventListener('touchend', function(e){
-        e.preventDefault();
         mobile = true;
         var currentTime = new Date().getTime();
         if(currentTime - ts < 500 && currentTime - ts > 0){
@@ -180,7 +180,7 @@ for(var i = 0; i < num ; i++){
             }
         }
         var tapLength = currentTime - lastTap;
-        if (tapLength < 500 && tapLength > 0) {
+        if (tapLength < 300 && tapLength > 0) {
             dblclk = 1;
             isDown = true
             mouseX = e.pageX
@@ -189,6 +189,8 @@ for(var i = 0; i < num ; i++){
             document.addEventListener('touchmove',move)
         }
         lastTap = currentTime;
+        e.preventDefault();
+        e.stopPropagation();
         })
 }
 
