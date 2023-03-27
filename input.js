@@ -23,6 +23,7 @@ var esc = false;
 var timeout;
 var lastTap = 0;
 var ts = 0;
+var mobile = false;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -64,7 +65,7 @@ target.forEach( ele => ele.addEventListener('click', (event) => {
 
 
 target.forEach(ele => ele.addEventListener('mousedown', function(e) {
-    if(dblclk === 0){
+    if(dblclk === 0 && !mobile){
         isDown = true
         mouseX = e.pageX
         mouseY = e.pageY
@@ -82,8 +83,8 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
     if(dblclk === 1){
         dblclk = 0;
     }
-    console.log(offsetsX);
-    console.log(offsetsY);
+    // console.log(offsetsX);
+    // console.log(offsetsY);
     isDown = false
     document.removeEventListener('mousemove', move)
   });
@@ -124,6 +125,7 @@ for(var i = 0; i < num ; i++){
     })
     target[i].addEventListener('touchend', function(e){
         e.preventDefault();
+        mobile = true;
         var currentTime = new Date().getTime();
         if(currentTime - ts < 500 && currentTime - ts > 0){
             if(dblclk === 1){
@@ -131,6 +133,8 @@ for(var i = 0; i < num ; i++){
                     offsetsX[moveid] += e.pageX - mouseX;
                     offsetsY[moveid] += e.pageY - mouseY;
                   }
+                console.log(offsetsX[moveid]);
+                console.log(offsetsY[moveid]);
                 dblclk = 0;
                 isDown = false
                 document.removeEventListener('touchmove', move)
