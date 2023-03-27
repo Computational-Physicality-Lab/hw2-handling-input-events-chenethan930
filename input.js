@@ -43,6 +43,7 @@ workspace.addEventListener('click', (event) => {
 })
 
 target.forEach( ele => ele.addEventListener('click', (event) => {
+    console.log('click')
     if(isColorSet === 0 && event.pageX - mouseX < 5 && event.pageY - mouseY < 5 && event.pageX - mouseX > -5 && event.pageY - mouseY > -5){
         ele.style.backgroundColor = '#00f';
         isColorSet = 1;
@@ -65,6 +66,7 @@ target.forEach( ele => ele.addEventListener('click', (event) => {
 
 
 target.forEach(ele => ele.addEventListener('mousedown', function(e) {
+    console.log('mousedown')
     if(dblclk === 0 && !mobile){
         isDown = true
         mouseX = e.pageX
@@ -76,6 +78,7 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
   }));
   
   document.addEventListener('mouseup', function(e) {
+    console.log('mouseup')
     if (isDown) {
       offsetsX[moveid] += e.pageX - mouseX;
       offsetsY[moveid] += e.pageY - mouseY;
@@ -99,6 +102,7 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
   }
 
 target.forEach(ele => ele.addEventListener('dblclick', function(e){
+    console.log('dblclick');
     dblclk = 1;
     isDown = true
     mouseX = e.pageX
@@ -129,6 +133,7 @@ for(var i = 0; i < num ; i++){
         var currentTime = new Date().getTime();
         if(currentTime - ts < 500 && currentTime - ts > 0){
             if(dblclk === 1){
+                console.log('release')
                 if (isDown) {
                     offsetsX[moveid] += e.pageX - mouseX;
                     offsetsY[moveid] += e.pageY - mouseY;
