@@ -123,9 +123,19 @@ for(var i = 0; i < num ; i++){
         ts = new Date().getTime();
     })
     target[i].addEventListener('touchend', function(e){
+        e.preventDefault();
         var currentTime = new Date().getTime();
         if(currentTime - ts < 500 && currentTime - ts > 0){
-            if(isColorSet === 0){
+            if(dblclk === 1){
+                if (isDown) {
+                    offsetsX[moveid] += e.pageX - mouseX;
+                    offsetsY[moveid] += e.pageY - mouseY;
+                  }
+                dblclk = 0;
+                isDown = false
+                document.removeEventListener('touchmove', move)
+            }
+            else if(isColorSet === 0){
                 target[this.id].style.backgroundColor = '#00f';
                 isColorSet = 1;
             }
@@ -136,7 +146,6 @@ for(var i = 0; i < num ; i++){
         }
         var tapLength = currentTime - lastTap;
         if (tapLength < 500 && tapLength > 0) {
-            e.preventDefault();
             dblclk = 1;
             isDown = true
             mouseX = e.pageX
