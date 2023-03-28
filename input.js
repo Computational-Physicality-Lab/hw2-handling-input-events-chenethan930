@@ -258,7 +258,7 @@ for(var i = 0; i < num ; i++){
 }
 
 function scale(e){
-    console.log('hi in scale')
+    console.log('fixed in scale')
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
     target[selected].style.width = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 + 'px' : (width_dic[selected]) * dif_p + 'px';
