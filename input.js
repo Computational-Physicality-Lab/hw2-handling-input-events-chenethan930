@@ -152,8 +152,9 @@ workspace.addEventListener('touchend', function(e){
           }
         console.log(offsetsX[moveid]);
         console.log(offsetsY[moveid]);
-        console.log(e.pageX);
-        console.log(e.pageY);
+        console.log('mouse:')
+        console.log(mouseX);
+        console.log(mouseY);
         dblclk = 0;
         isDown = false
         document.removeEventListener('touchmove', move)
