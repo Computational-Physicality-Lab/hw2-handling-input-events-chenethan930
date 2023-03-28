@@ -30,6 +30,7 @@ var wx = 0;
 var wy = 0;
 var bf = false;
 var abor = false;
+var difference = 0;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -152,11 +153,12 @@ workspace.addEventListener('touchstart', function(e){
     e.preventDefault();
     wx = e.pageX;
     wy = e.pageY;
-    if(e.touches.length == 2){
-        console.log(e.touches[0].clientX);
-        console.log(e.touches[1].clientX);
-        var difference = Math.abs(e.touches[0].clientX - e.touches[1].clientX)
-        console.log(difference)
+    if(e.touches.length == 2 && isColorSet === 1){
+        // console.log(e.touches[0].clientX);
+        // console.log(e.touches[1].clientX);
+        difference = Math.abs(e.touches[0].clientX - e.touches[1].clientX)
+        // console.log(difference)
+        document.addEventListener('touchmove', scale)
     }
 })
 workspace.addEventListener('touchend', function(e){
@@ -244,5 +246,12 @@ for(var i = 0; i < num ; i++){
         e.preventDefault();
         e.stopPropagation();    
         })
+}
+
+function scale(e){
+    console.log('in scale')
+    var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
+    var dif_p = 1 + (new_d - difference)/(difference * 1.0)
+    console.log(dif_p)
 }
 
