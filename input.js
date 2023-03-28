@@ -31,6 +31,7 @@ var wy = 0;
 var bf = false;
 var abor = false;
 var difference = 0;
+var selected = -1;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -177,6 +178,7 @@ workspace.addEventListener('touchend', function(e){
         console.log('turn red')
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
+        selected = -1;
     }
 })
 
@@ -210,10 +212,12 @@ for(var i = 0; i < num ; i++){
             else if(isColorSet === 0){
                 target[this.id].style.backgroundColor = '#00f';
                 isColorSet = 1;
+                selected = this.id;
             }
             else{
                 target.forEach(ele1 => ele1.style.backgroundColor = 'red')
                 target[this.id].style.backgroundColor = '#00f';
+                selected = this.id;
             }
         }
         if(isDown){     
@@ -253,5 +257,6 @@ function scale(e){
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
     console.log(dif_p)
+    target[selected].style.width = (target[selected].clientWidth) * dif_p + 'px';
 }
 
