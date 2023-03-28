@@ -33,6 +33,7 @@ var bf = false;
 var abor = false;
 var difference = 0;
 var selected = -1;
+var scaling = false;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -163,6 +164,7 @@ workspace.addEventListener('touchstart', function(e){
         // console.log(e.touches[0].clientX);
         // console.log(e.touches[1].clientX);
         difference = Math.abs(e.touches[0].clientX - e.touches[1].clientX)
+        scaling = true;
         // console.log(difference)
         document.addEventListener('touchmove', scale)
     }
@@ -178,7 +180,9 @@ workspace.addEventListener('touchend', function(e){
         dblclk = 0;
         isDown = false
         document.removeEventListener('touchmove', move)
-    }else if(abor || dblclk === 1){
+    }else if(abor || dblclk === 1 || scaling){
+        // scaling = false
+
     }else{
         console.log('turn red')
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
@@ -258,7 +262,7 @@ for(var i = 0; i < num ; i++){
 }
 
 function scale(e){
-    console.log('fixed in scale')
+    console.log('50% in scale')
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
     target[selected].style.width = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 + 'px' : (width_dic[selected]) * dif_p + 'px';

@@ -21,7 +21,8 @@ body {
 }
 
 .target {
-  position: fixed;
+  position: absolute;
+  left: 50%;
   border: 1px solid black;
   background-color: red;
   box-sizing: border-box;
