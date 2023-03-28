@@ -267,7 +267,8 @@ function scale(e){
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
     var temp = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 + 'px' : (width_dic[selected]) * dif_p + 'px';
     target[selected].style.width = temp;
-    target[selected].style.marginLeft = '-' + temp/2.0 + 'px'
-    console.log('-' + temp/2.0 + 'px')
+    target[selected].style.marginLeft = '-' + temp/2 + 'px'
+    console.log(temp)
+    console.log('-' + temp/2 + 'px')
 }
 
