@@ -18,6 +18,7 @@ var num = target.length;
 var moveid = -1;
 var offsetsX = {};
 var offsetsY = {};
+var width_dic = {};
 var dblclk = 0;
 var esc = false;
 var timeout;
@@ -39,6 +40,10 @@ for( var i = 0 ; i < num; i++){
 for(var i = 0; i < num; i++){
     offsetsX[i] = 0;
     offsetsY[i] = 0;
+}
+
+for(var i = 0 ; i < num ; i++){
+    width_dic[i] = target[i].clientWidth;
 }
 
 workspace.addEventListener('click', (event) => {
@@ -253,10 +258,9 @@ for(var i = 0; i < num ; i++){
 }
 
 function scale(e){
-    console.log('in scale')
+    console.log('hi in scale')
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
-    console.log(dif_p)
-    target[selected].style.width = (target[selected].clientWidth) * dif_p + 'px';
+    target[selected].style.width = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 + 'px' : (width_dic[selected]) * dif_p + 'px';
 }
 
