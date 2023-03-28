@@ -29,6 +29,7 @@ var ddy = 0;
 var wx = 0;
 var wy = 0;
 var bf = false;
+var abor = false;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -110,7 +111,6 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
     if (isDown) {
       const dx = e.pageX - mouseX
       const dy = e.pageY - mouseY
-      console.log(dy)
       ddx =  dx;
       ddy =  dy;
       target[moveid].style.transform = `translate(${offsetsX[moveid] + dx}px,${offsetsY[moveid] + dy}px)`;
@@ -121,6 +121,7 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
             isDown = false;
             target[moveid].style.transform = `translate(${offsetsX[moveid]}px,${offsetsY[moveid]}px)`;
             document.removeEventListener('touchmove', move)
+            abor = true;
         }
       }
     }
@@ -160,14 +161,10 @@ workspace.addEventListener('touchend', function(e){
             offsetsX[moveid] += ddx ;
             offsetsY[moveid] += ddy ;
           }
-        console.log(offsetsX[moveid]);
-        console.log(offsetsY[moveid]);
-        console.log(ddy);
-        console.log(mouseY);
         dblclk = 0;
         isDown = false
         document.removeEventListener('touchmove', move)
-    }else if(dblclk === 1){
+    }else if(abor || dblclk === 1){
     }else{
         console.log('turn red')
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
@@ -230,13 +227,13 @@ for(var i = 0; i < num ; i++){
             isDown = true
             mouseX = e.pageX
             mouseY = e.pageY
-            console.log('mouseX is');
-            console.log(mouseX)
-            console.log('mouseY is');
-            console.log(mouseY)
-            moveid = this.id;
-            console.log(offsetsX[moveid])
-            console.log(offsetsY[moveid])
+            // console.log('mouseX is');
+            // console.log(mouseX)
+            // console.log('mouseY is');
+            // console.log(mouseY)
+            // moveid = this.id;
+            // console.log(offsetsX[moveid])
+            // console.log(offsetsY[moveid])
             document.addEventListener('touchmove',move)
         }
         lastTap = currentTime;
