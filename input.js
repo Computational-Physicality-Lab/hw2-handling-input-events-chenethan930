@@ -110,6 +110,7 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
     if (isDown) {
       const dx = e.pageX - mouseX
       const dy = e.pageY - mouseY
+      console.log(dy)
       ddx = offsetsX[moveid] + dx;
       ddy = offsetsY[moveid] + dy;
       target[moveid].style.transform = `translate(${offsetsX[moveid] + dx}px,${offsetsY[moveid] + dy}px)`;
@@ -152,8 +153,7 @@ workspace.addEventListener('touchend', function(e){
           }
         console.log(offsetsX[moveid]);
         console.log(offsetsY[moveid]);
-        console.log('mouse:')
-        console.log(mouseX);
+        console.log(ddy);
         console.log(mouseY);
         dblclk = 0;
         isDown = false
@@ -205,15 +205,15 @@ for(var i = 0; i < num ; i++){
             }
         }
         if(isDown){     
-            offsetsX[moveid] += e.pageX - mouseX;
-            offsetsY[moveid] += e.pageY - mouseY;
+            offsetsX[moveid] += ddx - mouseX;
+            offsetsY[moveid] += ddy - mouseY;
             if(dblclk === 1){
                 dblclk = 0;
             }
             // console.log(offsetsX);
             // console.log(offsetsY);
             isDown = false
-            document.removeEventListener('mousemove', move)
+            document.removeEventListener('touchmove', move)
         }
         var tapLength = currentTime - lastTap;
         if (tapLength < 300 && tapLength > 0) {
