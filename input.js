@@ -262,13 +262,13 @@ for(var i = 0; i < num ; i++){
 }
 
 function scale(e){
-    console.log('fixed in scale')
+    console.log('floor in scale')
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
     var temp = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 + 'px' : (width_dic[selected]) * dif_p + 'px';
     target[selected].style.width = temp;
     target[selected].style.marginLeft = '-' + temp/2 + 'px'
     console.log(temp)
-    console.log('-' + temp/2 + 'px')
+    console.log('-' + Math.floor(temp)/2 + 'px')
 }
 
