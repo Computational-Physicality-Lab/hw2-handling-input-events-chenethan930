@@ -111,8 +111,8 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
       const dx = e.pageX - mouseX
       const dy = e.pageY - mouseY
       console.log(dy)
-      ddx = offsetsX[moveid] + dx;
-      ddy = offsetsY[moveid] + dy;
+      ddx =  dx;
+      ddy =  dy;
       target[moveid].style.transform = `translate(${offsetsX[moveid] + dx}px,${offsetsY[moveid] + dy}px)`;
     }
   }
@@ -148,8 +148,8 @@ workspace.addEventListener('touchend', function(e){
     if(dblclk === 1 && e.pageX - wx < 5 && e.pageY - wy < 5 && e.pageX - wx > -5 && e.pageY - wy > -5){
         console.log('release in workspace')
         if (isDown) {
-            offsetsX[moveid] += e.pageX - mouseX;
-            offsetsY[moveid] += e.pageY - mouseY;
+            offsetsX[moveid] += ddx ;
+            offsetsY[moveid] += ddy ;
           }
         console.log(offsetsX[moveid]);
         console.log(offsetsY[moveid]);
@@ -186,8 +186,8 @@ for(var i = 0; i < num ; i++){
             if(dblclk === 1){
                 console.log('release in target')
                 if (isDown) {
-                    offsetsX[moveid] += e.pageX - mouseX;
-                    offsetsY[moveid] += e.pageY - mouseY;
+                    offsetsX[moveid] += ddx;
+                    offsetsY[moveid] += ddy;
                   }
                 console.log(offsetsX[moveid]);
                 console.log(offsetsY[moveid]);
