@@ -152,6 +152,12 @@ workspace.addEventListener('touchstart', function(e){
     e.preventDefault();
     wx = e.pageX;
     wy = e.pageY;
+    if(e.touches.length == 2){
+        console.log(e.touches[0].clientX);
+        console.log(e.touches[1].clientX);
+        var difference = Math.abs(e.touches[0].clientX - e.touches[1].clientX)
+        console.log(difference)
+    }
 })
 workspace.addEventListener('touchend', function(e){
     e.preventDefault();
@@ -195,8 +201,6 @@ for(var i = 0; i < num ; i++){
                     offsetsX[moveid] += ddx;
                     offsetsY[moveid] += ddy;
                   }
-                console.log(offsetsX[moveid]);
-                console.log(offsetsY[moveid]);
                 dblclk = 0;
                 isDown = false
                 document.removeEventListener('touchmove', move)
