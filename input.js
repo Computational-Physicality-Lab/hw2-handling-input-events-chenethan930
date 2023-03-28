@@ -148,8 +148,8 @@ workspace.addEventListener('touchend', function(e){
     if(dblclk === 1 && e.pageX - wx < 5 && e.pageY - wy < 5 && e.pageX - wx > -5 && e.pageY - wy > -5){
         console.log('release in workspace')
         if (isDown) {
-            offsetsX[moveid] += ddx - mouseX;
-            offsetsY[moveid] += ddy - mouseY;
+            offsetsX[moveid] += e.pageX - mouseX;
+            offsetsY[moveid] += e.pageY - mouseY;
           }
         console.log(offsetsX[moveid]);
         console.log(offsetsY[moveid]);
@@ -186,8 +186,8 @@ for(var i = 0; i < num ; i++){
             if(dblclk === 1){
                 console.log('release in target')
                 if (isDown) {
-                    offsetsX[moveid] += ddx - mouseX;
-                    offsetsY[moveid] += ddy - mouseY;
+                    offsetsX[moveid] += e.pageX - mouseX;
+                    offsetsY[moveid] += e.pageY - mouseY;
                   }
                 console.log(offsetsX[moveid]);
                 console.log(offsetsY[moveid]);
@@ -205,8 +205,8 @@ for(var i = 0; i < num ; i++){
             }
         }
         if(isDown){     
-            offsetsX[moveid] += ddx - mouseX;
-            offsetsY[moveid] += ddy - mouseY;
+            offsetsX[moveid] += e.pageX - mouseX;
+            offsetsY[moveid] += e.pageY - mouseY;
             if(dblclk === 1){
                 dblclk = 0;
             }
