@@ -116,8 +116,8 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
       target[moveid].style.transform = `translate(${offsetsX[moveid] + dx}px,${offsetsY[moveid] + dy}px)`;
       if( mobile && e.touches.length > 1){
         if(isDown){
-            console.log('abort')
-            dblclk == 0;
+            console.log('abort/db to 0')
+            dblclk = 0;
             isDown = false;
             target[moveid].style.transform = `translate(${offsetsX[moveid]}px,${offsetsY[moveid]}px)`;
             document.removeEventListener('touchmove', move)
