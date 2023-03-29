@@ -173,6 +173,7 @@ workspace.addEventListener('touchstart', function(e){
     }
     if(e.touches.length === 3){
         target[selected].style.width = width_dic[selected] + 'px'
+        target[selected].style.marginLeft = '-' + width_dic[selected]/2 + 'px'
         temp = width_dic[selected]
         console.log('abort with temp')
         console.log(temp)
