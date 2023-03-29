@@ -186,11 +186,14 @@ workspace.addEventListener('touchend', function(e){
             console.log(abor)
             console.log(dblclk)
             console.log(scaling)
+            abor = false;
+            console.log('abort is false')
             if(dblclk === 0 && scaling && e.touches.length === 1){
                 width_dic[selected] = temp;
             }
             if(e.touches.length === 0){
                 scaling = false;
+                console.log('scale is false')
             }
 
     }else{
