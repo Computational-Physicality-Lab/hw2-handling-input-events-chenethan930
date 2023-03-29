@@ -34,6 +34,7 @@ var abor = false;
 var difference = 0;
 var selected = -1;
 var scaling = false;
+var temp = 0;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -182,6 +183,11 @@ workspace.addEventListener('touchend', function(e){
         document.removeEventListener('touchmove', move)
     }else if(abor || dblclk === 1 || scaling){
         // scaling = false
+            if(dblclk === 0 && scaling && e.touches.length === 1){
+                width_dic[selected] = temp;
+                console.log('temp is')
+                console.log(temp)
+            }
 
     }else{
         console.log('turn red')
@@ -262,11 +268,11 @@ for(var i = 0; i < num ; i++){
 }
 
 function scale(e){
-    console.log('Xpx in scale')
+    console.log('temp in scale')
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
-    var temp = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 + 'px' : (width_dic[selected]) * dif_p + 'px';
-    target[selected].style.width = temp;
+    temp = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 : (width_dic[selected]) * dif_p;
+    target[selected].style.width = temp + 'px';
     target[selected].style.marginLeft = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? '-' + width_dic[selected]/ 4 + 'px' : '-' + ((width_dic[selected]) * dif_p) / 2 + 'px';
     // console.log('-' + temp/2 + 'px')
 }
