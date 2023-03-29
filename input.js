@@ -51,7 +51,6 @@ for(var i = 0 ; i < num ; i++){
 }
 
 workspace.addEventListener('click', (event) => {
-    console.log('workspace click')
     if(esc === false && !bf){
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
@@ -62,7 +61,6 @@ workspace.addEventListener('click', (event) => {
 })
 
 target.forEach( ele => ele.addEventListener('click', (event) => {
-    console.log('click')
     if(isColorSet === 0 && event.pageX - mouseX < 5 && event.pageY - mouseY < 5 && event.pageX - mouseX > -5 && event.pageY - mouseY > -5){
         ele.style.backgroundColor = '#00f';
         isColorSet = 1;
@@ -88,7 +86,6 @@ target.forEach( ele => ele.addEventListener('click', (event) => {
 
 
 target.forEach(ele => ele.addEventListener('mousedown', function(e) {
-    console.log('mousedown')
     if(dblclk === 0 && !mobile){
         isDown = true
         mouseX = e.pageX
@@ -101,7 +98,6 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
   
   document.addEventListener('mouseup', function(e) {
     if(!mobile){
-        console.log('mouseup')
         if (isDown) {
         offsetsX[moveid] += e.pageX - mouseX;
         offsetsY[moveid] += e.pageY - mouseY;
@@ -127,7 +123,6 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
       target[moveid].style.transform = `translate(${offsetsX[moveid] + dx}px,${offsetsY[moveid] + dy}px)`;
       if( mobile && e.touches.length > 1){
         if(isDown){
-            console.log('abort/db to 0')
             dblclk = 0;
             isDown = false;
             target[moveid].style.transform = `translate(${offsetsX[moveid]}px,${offsetsY[moveid]}px)`;
@@ -139,7 +134,6 @@ target.forEach(ele => ele.addEventListener('mousedown', function(e) {
   }
 
 target.forEach(ele => ele.addEventListener('dblclick', function(e){
-    console.log('dblclick');
     dblclk = 1;
     isDown = true
     mouseX = e.pageX
@@ -173,8 +167,6 @@ workspace.addEventListener('touchstart', function(e){
         target[selected].style.width = width_dic[selected] + 'px'
         target[selected].style.marginLeft = '-' + width_dic[selected]/2 + 'px'
         temp = width_dic[selected]
-        console.log('abort with temp')
-        console.log(temp)
         document.removeEventListener('touchmove', scale)
     }
 })
@@ -191,17 +183,17 @@ workspace.addEventListener('touchend', function(e){
         document.removeEventListener('touchmove', move)
     }else if(abor || dblclk === 1 || scaling){
         // scaling = false
+            console.log(abor)
+            console.log(dblclk)
+            console.log(scaling)
             if(dblclk === 0 && scaling && e.touches.length === 1){
                 width_dic[selected] = temp;
-                console.log('temp is')
-                console.log(temp)
             }
             if(e.touches.length === 0){
                 scaling = false;
             }
 
     }else{
-        console.log('turn red')
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
         selected = -1;
@@ -279,7 +271,6 @@ for(var i = 0; i < num ; i++){
 }
 
 function scale(e){
-    console.log('temp in scale')
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
     temp = width_dic[selected] * dif_p < origin_width[selected]/ 2 ? origin_width[selected]/ 2 : (width_dic[selected]) * dif_p;
