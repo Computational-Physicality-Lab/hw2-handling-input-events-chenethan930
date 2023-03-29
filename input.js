@@ -19,6 +19,7 @@ var moveid = -1;
 var offsetsX = {};
 var offsetsY = {};
 var width_dic = {};
+var origin_width = {};
 var dblclk = 0;
 var esc = false;
 var timeout;
@@ -46,6 +47,7 @@ for(var i = 0; i < num; i++){
 
 for(var i = 0 ; i < num ; i++){
     width_dic[i] = target[i].clientWidth;
+    origin_width[i] = target[i].clientWidth;
 }
 
 workspace.addEventListener('click', (event) => {
@@ -169,6 +171,13 @@ workspace.addEventListener('touchstart', function(e){
         // console.log(difference)
         document.addEventListener('touchmove', scale)
     }
+    if(e.touches.length === 3){
+        target[selected].style.width = width_dic[selected] + 'px'
+        temp = width_dic[selected]
+        console.log('abort with temp')
+        console.log(temp)
+        document.removeEventListener('touchmove', scale)
+    }
 })
 workspace.addEventListener('touchend', function(e){
     e.preventDefault();
@@ -271,9 +280,9 @@ function scale(e){
     console.log('temp in scale')
     var new_d = Math.abs(e.touches[1].clientX - e.touches[0].clientX)
     var dif_p = 1 + (new_d - difference)/(difference * 1.0)
-    temp = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? width_dic[selected]/ 2 : (width_dic[selected]) * dif_p;
+    temp = width_dic[selected] * dif_p < origin_width[selected]/ 2 ? origin_width[selected]/ 2 : (width_dic[selected]) * dif_p;
     target[selected].style.width = temp + 'px';
-    target[selected].style.marginLeft = width_dic[selected] * dif_p < width_dic[selected]/ 2 ? '-' + width_dic[selected]/ 4 + 'px' : '-' + ((width_dic[selected]) * dif_p) / 2 + 'px';
+    target[selected].style.marginLeft = width_dic[selected] * dif_p < origin_width[selected]/ 2 ? '-' + origin_width[selected]/ 4 + 'px' : '-' + ((width_dic[selected]) * dif_p) / 2 + 'px';
     // console.log('-' + temp/2 + 'px')
 }
 
