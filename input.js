@@ -164,8 +164,6 @@ workspace.addEventListener('touchstart', function(e){
     wx = e.pageX;
     wy = e.pageY;
     if(e.touches.length == 2 && isColorSet === 1){
-        // console.log(e.touches[0].clientX);
-        // console.log(e.touches[1].clientX);
         difference = Math.abs(e.touches[0].clientX - e.touches[1].clientX)
         scaling = true;
         // console.log(difference)
@@ -197,6 +195,9 @@ workspace.addEventListener('touchend', function(e){
                 width_dic[selected] = temp;
                 console.log('temp is')
                 console.log(temp)
+            }
+            if(e.touches.length === 0){
+                scaling = false;
             }
 
     }else{
