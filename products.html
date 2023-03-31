@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SSUI HW1 - Home</title>
+  <title>SSUI HW1 - Products</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@200;500&family=Open+Sans&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
   <!-- Your JS Code -->
   <script src="main.js"></script>
 </head>
-<body style="background-color:#c51230">
+<body onload="initProducts()" style="background-color:#c51230">
   <div class="header">
     <div class="wrapper"> 
       <a href="./index.html"><div>
@@ -40,25 +40,15 @@
       <div class="menu_wrapper">
         <a href="./products.html"><div class="menu_names">T-SHIRTS</div></a>
         <a href="./not_implemented.html"><div class="menu_names">HOODIES</div></a>
-        <a href="./result.html"><div class="menu_names">CREATE YOUR OWN</div></a>
+        <a href="./not_implemented.html"><div class="menu_names">CREATE YOUR OWN</div></a>
         <a href="./not_implemented.html"><div class="menu_names">ABOUT US</div></a>
         <a href="./not_implemented.html"><div class="menu_names">LOG IN</div></a>
       </div>
     </div>
   </div>
-  <img src="site_images/home.png" class="home_img">
-  <div class="intro">
-    <div class="intro_wrapper">
-      <div class="info2">
-        <div class="big_word">We don't ship. We're not real.</div>
-        <div class="small_word">We sell shirts. We are passionate about selling shirts. But keep in mind we have no infrastructure, supply chain, or mechanism to actually produce these shirts or fulfill the orders. But the shirts will always be real in your imagination.</div>
-      </div>
-      <div class="info1">
-        <div class="big_word">Design your own shirt! But help us to do that...</div>
-        <div class="small_word">Not only do we not sell shirts, but we let you design your own! Eventually. We actually kinda need your help implementing that. If you could build an actual paint-style interface that you can make designs in that would be great:)</div>
-      </div>
-    </div>
-  </div>
+  <div class="Twrap"><div class="Tshirts">Our T-Shirts</div></div>
+  <div id="shirts"></div>
+
   <div class="footer">
     <div class="footer_wrapper">
       <a href="./not_implemented.html"><div class="footers">Contact Us</div></a>

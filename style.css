@@ -1,0 +1,475 @@
+/* Your Code Here */
+body {
+    padding: 0px;
+    margin: 0px;
+    }
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+.header{
+    margin-top: 20px;
+    /* height: 166px; */
+    width: 100%;
+    background-color: white;
+}
+
+.logo{
+    margin-left: 5%;
+    height : 100px;
+    width: auto;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.title{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;  
+    font-family: Catamaran;
+    font-size: 40px;
+}
+
+.cart_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart{
+    width: 80px;
+    height: 50px;
+    background-color: #c51230;
+    border-radius: 15px;
+}
+
+.cart_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50px;
+}
+
+.sc{
+    width:30px;
+}
+
+.sc_d{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.cart_number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Open Sans;
+    color: white;
+}
+
+.menu{
+    height: 60px;
+    background-color: white;
+    border-top: 1px solid #C9C9C9;
+    border-bottom:  1px solid #C9C9C9;
+}
+
+.menu_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.menu_names{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;  
+    font-family: Catamaran;
+    font-size: 15px;
+    color: #C9C9C9;
+}
+
+.menu_names:hover{
+    text-decoration: underline #c51230 3px;
+    text-underline-offset: 7px;
+    color: black;
+    transition: 0.5s;
+}
+
+.home_img{
+    width: 100%;
+    border: 0px;
+    display: block;
+}
+
+.intro{
+    height: auto;
+    background-color: white;
+    padding-top: 0.1px;
+}
+
+.intro_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.info1{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    border: 5px solid #c51230;
+    height: auto;
+}
+
+.info2{
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    border: 5px solid #c51230;
+    height: auto;
+}
+
+.big_word{
+    font-family: Open Sans;
+    color:#c51230;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: 100;
+}
+
+.small_word{
+    font-family: Open Sans;
+    color: gray;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-weight: 100;
+}
+
+.footer{
+    height: 100px;
+    width: 100%;
+    background-color: #c51230;
+}
+
+.footer_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.footers{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;  
+    font-family: Catamaran;
+    font-size: 15px;
+    color: #C9C9C9;
+}
+
+.author{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;  
+    font-family: Catamaran;
+    font-size: 15px;
+    color: #C9C9C9;
+}
+
+.footers:hover{
+    color: black;
+}
+
+
+.unavailable {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Open Sans;
+    font-size: 25px;
+    color: #C9C9C9;
+}
+
+.Tshirts{
+    position: absolute;
+    bottom: 0;
+    color:black;
+    font-size: 30px;
+    font-family: Open Sans;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 2%;
+
+}
+
+.Twrap{
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: 60px;
+}
+
+.t_img{    
+    width : "80%";
+    margin: '20px';
+
+}
+
+.info{
+    font-family: Catamaran;
+    font-size: 40px;
+    color: #c51230;
+    font-weight: 100;
+    margin: 20px;
+}
+
+.des{
+    font-family: Catamaran;
+    font-size: 20px;
+    color: #c51230;
+    font-weight: 100;
+    margin-left: 20px;
+}
+
+.row {
+    display: table;
+    border-spacing: 20px; /*Optional*/
+}
+
+.column{
+    display: table-cell;
+}
+
+.side{
+    font-family: Catamaran;
+    font-size: 20px;
+    color: gray;
+    font-weight: 100;
+    vertical-align: middle;
+}
+
+.side_1{
+    font-family: Catamaran;
+    font-size: 20px;
+    color: white;
+    font-weight: 100;
+    vertical-align: middle;
+}
+
+.s_btn{
+    background-color: #c51230;
+    font-family: Catamaran;
+    font-weight: 100;
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #c51230;
+}
+
+.s_btn:hover{
+    color: black;
+}
+
+.c_btn{
+    font-family: Catamaran;
+    font-weight: 100;
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+
+.c_btn:hover{
+    color: gray;
+}
+
+.canva{
+    background-color: white;
+    width: 100%;
+}
+
+.wrapping{
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+    margin-left : 10%;
+    margin-right : 10%;
+}
+
+.block{
+    border : 5px solid #c51230;
+    border-radius : 25px;
+    margin : 20px;
+    height : 550px;
+}
+
+.shirt_img{
+    width : 100%;
+    border-top-left-radius: 25px;
+    border-top-right-radius : 25px;
+}
+
+.shirt_title{
+    font-family: Catamaran;
+    color : #c51230;
+    font-size: 25px;
+    margin-top:  10px;
+    margin-left:  20px;
+    font-weight:  100;
+}
+
+.shirt_num{
+    font-family: Catamaran;
+    color : gray;
+    font-size: 15px;
+    margin-left: 20px;
+    font-weight: 100;
+}
+
+.wrapper_1{
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 10%;
+    margin-right: 10%;
+    height : 60px;
+}
+
+.but_1{
+    background-color: #c51230;
+    height : 40px;
+    width : 90px;
+    margin : auto;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    color : white;
+    font-family: Catamaran;
+    font-weight: 100;
+}
+
+.but_1:hover{
+    color: black;
+}
+
+.t_canva{
+    background-color: white;
+    width : 100%;
+    height : 600px;
+}
+
+.t_wrapping{
+    display : grid;
+    grid-template-columns: 1fr 2fr;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.q_div{
+    width: 100%;
+    background-color: #E0E0E0;
+    height: 400px;
+}
+
+.q_wrapper{
+    display : grid;
+    grid-template-columns: 1fr 1fr 4fr;
+    margin-left: 10%;
+    margin-right: 10%;
+    height : 400px;
+}
+
+.q_name{
+    font-family: Catamaran;
+    font-size: 30px;
+    color: black;
+    font-weight: 100;
+    margin: 15px;
+    margin-top: 45px;
+}
+
+.q_price{
+    font-family: Catamaran;
+    font-size: 25px;
+    color: #c51230;
+    font-weight: 100;
+    margin: 15px;
+}
+
+.q_des{
+    font-family: Catamaran;
+    font-size: 15px;
+    color: #c51230;
+    font-weight: 100;
+    margin: 15px;
+}
+
+.q_btn{
+    background-color: #c51230;
+    display: inline-block;
+    height : 30px;
+    width : 80px;
+    margin : 15px;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    color : white;
+    font-family: Catamaran;
+    font-weight: 100;
+}
+
+.q_btn:hover{
+    color:black;
+}
+
+.q_img{
+    height: 300px;
+    margin: auto;
+}
+
+.q_img1_a{
+    margin: auto;
+}
+
+.q_img2_a{
+    margin: auto;
+}
