@@ -36,6 +36,7 @@ var difference = 0;
 var selected = -1;
 var scaling = false;
 var temp = 0;
+var db_es = 0;
 
 for( var i = 0 ; i < num; i++){
     target[i].setAttribute('id', i);
@@ -51,9 +52,10 @@ for(var i = 0 ; i < num ; i++){
 }
 
 workspace.addEventListener('click', (event) => {
-    if(esc === false && !bf){
+    if((esc === false && !bf) || db_es === 1){
         target.forEach(ele1 => ele1.style.backgroundColor = 'red')
         isColorSet = 0;
+        db_es = 0;
     }
     bf = false;
     esc = false;
@@ -148,6 +150,9 @@ document.addEventListener('keydown', evt => {
             esc = true;
             target[moveid].style.transform = `translate(${offsetsX[moveid]}px,${offsetsY[moveid]}px)`;
             isDown = false;
+            if(dblclk === 1){
+                db_es = 1;
+            }
             dblclk = 0;
         }
     }
