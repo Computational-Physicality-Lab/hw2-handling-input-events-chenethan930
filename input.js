@@ -188,17 +188,17 @@ workspace.addEventListener('touchend', function(e){
         document.removeEventListener('touchmove', move)
     }else if(abor || dblclk === 1 || scaling){
         // scaling = false
-            console.log(abor)
-            console.log(dblclk)
-            console.log(scaling)
+            // console.log(abor)
+            // console.log(dblclk)
+            // console.log(scaling)
             abor = false;
-            console.log('abort is false')
+            // console.log('abort is false')
             if(dblclk === 0 && scaling && e.touches.length === 1){
                 width_dic[selected] = temp;
             }
             if(e.touches.length === 0){
                 scaling = false;
-                console.log('scale is false')
+                // console.log('scale is false')
             }
 
     }else{
@@ -226,7 +226,6 @@ for(var i = 0; i < num ; i++){
         var currentTime = new Date().getTime();
         if(currentTime - ts < 200 && currentTime - ts > 0){
             if(dblclk === 1){
-                console.log('release in target')
                 if (isDown) {
                     offsetsX[moveid] += ddx;
                     offsetsY[moveid] += ddy;
@@ -284,6 +283,5 @@ function scale(e){
     temp = width_dic[selected] * dif_p < origin_width[selected]/ 2 ? origin_width[selected]/ 2 : (width_dic[selected]) * dif_p;
     target[selected].style.width = temp + 'px';
     target[selected].style.marginLeft = width_dic[selected] * dif_p < origin_width[selected]/ 2 ? '-' + origin_width[selected]/ 4 + 'px' : '-' + ((width_dic[selected]) * dif_p) / 2 + 'px';
-    // console.log('-' + temp/2 + 'px')
 }
 
